@@ -1,4 +1,4 @@
-package tech.michalmaniak.listeners;
+package tech.michalmaniak.Listeners;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
