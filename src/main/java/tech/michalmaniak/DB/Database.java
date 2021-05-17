@@ -1,4 +1,6 @@
 package tech.michalmaniak.DB;
+import org.bukkit.Bukkit;
+
 import javax.xml.crypto.Data;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,8 +13,9 @@ public class Database {
 
     private Database() {
         try{
-            connection=DriverManager.getConnection("jdbc:sqlite:CRPluginDB.db");
+            connection=DriverManager.getConnection("jdbc:sqlite:plugins/CRP/CRPluginDB.db");
         }catch (SQLException e){
+            Bukkit.getLogger().info(e.toString());
 
         }
 
