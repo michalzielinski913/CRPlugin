@@ -1,28 +1,28 @@
 package tech.michalmaniak.RProfile;
 
 import org.bukkit.entity.Player;
-import tech.michalmaniak.Stats.Combat;
-import tech.michalmaniak.Stats.Dodge;
-import tech.michalmaniak.Stats.Magic;
-import tech.michalmaniak.Stats.Shooting;
+import tech.michalmaniak.DB.Database;
+import tech.michalmaniak.Stats.*;
 
 public class RProfile {
-    public enum SKILL {
-        COMBAT, SHOOTING, DODGE, MAGIC;
-    }
+
     private Combat cmb;
     private Shooting sht;
     private Dodge doge;
     private Magic mgc;
 
 
-    public RProfile(Player pl){
-      //  String uuid=pl.getUniqueId();
+    public RProfile(Player pl) {
+        //  String uuid=pl.getUniqueId();
         //download from db
+        cmb = new Combat(Database.getStat(pl, Stat.SKILL.COMBAT));
+        sht = new Shooting(Database.getStat(pl, Stat.SKILL.SHOOTING));
+        doge = new Dodge(Database.getStat(pl, Stat.SKILL.DODGE));
+        mgc = new Magic(Database.getStat(pl, Stat.SKILL.MAGIC));
     }
 
-    public void modifyCombat(SKILL type, int value){
-        switch(type){
+    public void modifyCombat(Stat.SKILL type, int value) {
+        switch (type) {
             case COMBAT:
                 cmb.modify(value);
                 break;
@@ -38,9 +38,17 @@ public class RProfile {
         }
     }
 
-
-
-
-
-
+    public int getSkillLevel(Stat.SKILL type) {
+        switch (type) {
+            case COMBAT:
+                 return cmb.getLevel();
+            case SHOOTING:
+                return sht.getLevel();
+            case DODGE:
+                return doge.getLevel();
+            case MAGIC:
+                return mgc.getLevel();
+        }
+        return -1;
+    }
 }

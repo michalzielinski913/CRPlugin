@@ -2,7 +2,7 @@ package tech.michalmaniak.Utility;
 
 import org.bukkit.ChatColor;
 
-public class ChatParser {
+public abstract class ChatParser {
 
     public static String colorChat(String value){
         return ChatColor.translateAlternateColorCodes('&', value);

@@ -4,7 +4,10 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import tech.michalmaniak.Commands.crp;
+import tech.michalmaniak.Commands.skills;
 import tech.michalmaniak.DB.Database;
+import tech.michalmaniak.Listeners.onPlayerJoin;
+import tech.michalmaniak.Listeners.onPlayerLeave;
 import tech.michalmaniak.RProfile.RProfile;
 
 
@@ -24,6 +27,11 @@ public class CRPlugin extends JavaPlugin {
 
 
         this.getCommand("crp").setExecutor(new crp());
+        this.getCommand("skills").setExecutor(new skills());
+        getServer().getPluginManager().registerEvents(new onPlayerJoin(), this);
+        getServer().getPluginManager().registerEvents(new onPlayerLeave(), this);
+
+
     }
 
     @Override

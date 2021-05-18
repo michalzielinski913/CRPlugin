@@ -8,3 +8,7 @@ commands:
     description: CRP spreadsheet
     usage: /crp
     permission: crp.commands.crp
+  skills:
+    description: User skills
+    usage: /skills
+    permission: crp.commands.skills

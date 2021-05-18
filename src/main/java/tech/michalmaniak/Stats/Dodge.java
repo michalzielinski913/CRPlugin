@@ -1,9 +1,10 @@
 package tech.michalmaniak.Stats;
 
-public class Dodge extends Stats {
+public class Dodge extends Stat {
 
     public Dodge(int bonus){
-        super(bonus, bonus);
+        super(bonus);
+        sk=SKILL.DODGE;
     }
 
 }
