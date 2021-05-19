@@ -28,13 +28,11 @@ public abstract class Stat {
     int level;
     public Stat(int value){
         this.level=value;
-        this.min+=min;
-        this.max+=max;
     }
 
     public int getRoll(){
         int result=min + (int)(Math.random() * ((max - min) + 1));
-        return result;
+        return result+level;
     }
 
     public int getMin(){

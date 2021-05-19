@@ -51,4 +51,18 @@ public class RProfile {
         }
         return -1;
     }
+
+    public int getRoll(Stat.SKILL type){
+        switch (type) {
+            case COMBAT:
+                return cmb.getRoll();
+            case SHOOTING:
+                return sht.getRoll();
+            case DODGE:
+                return doge.getRoll();
+            case MAGIC:
+                return mgc.getRoll();
+        }
+        return -1;
+    }
 }

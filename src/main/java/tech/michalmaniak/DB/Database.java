@@ -45,7 +45,6 @@ public class Database {
         try(PreparedStatement stm=connection.prepareStatement(query)){
             stm.setString(1, pl.getUniqueId().toString());
             ResultSet res=stm.executeQuery();
-            Bukkit.getLogger().info(String.valueOf(res.getInt("TOTAl")));
             if(res.getInt("TOTAl")==0){
                 return false;
             }else{

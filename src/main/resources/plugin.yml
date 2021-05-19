@@ -12,3 +12,19 @@ commands:
     description: User skills
     usage: /skills
     permission: crp.commands.skills
+  croll:
+    description: Combat roll
+    usage: /croll
+    permission: crp.commands.croll
+  droll:
+    description: Dodge roll
+    usage: /droll
+    permission: crp.commands.droll
+  sroll:
+    description: Shooring roll
+    usage: /sroll
+    permission: crp.commands.sroll
+  mroll:
+    description: Magic roll
+    usage: /mroll
+    permission: crp.commands.mroll
