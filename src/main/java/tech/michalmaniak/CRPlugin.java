@@ -4,6 +4,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import tech.michalmaniak.Commands.crp;
+import tech.michalmaniak.Commands.moderation.skillManipulator;
 import tech.michalmaniak.Commands.roll;
 import tech.michalmaniak.Commands.skills;
 import tech.michalmaniak.DB.Database;
@@ -35,6 +36,8 @@ public class CRPlugin extends JavaPlugin {
         this.getCommand("droll").setExecutor(new roll(Stat.SKILL.DODGE));
         this.getCommand("sroll").setExecutor(new roll(Stat.SKILL.SHOOTING));
         this.getCommand("mroll").setExecutor(new roll(Stat.SKILL.MAGIC));
+
+        this.getCommand("skill").setExecutor(new skillManipulator());
         getServer().getPluginManager().registerEvents(new onPlayerJoin(), this);
         getServer().getPluginManager().registerEvents(new onPlayerLeave(), this);
 

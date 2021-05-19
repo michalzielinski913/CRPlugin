@@ -7,24 +7,28 @@ commands:
   crp:
     description: CRP spreadsheet
     usage: /crp
-    permission: crp.commands.crp
+    permission: crp.commands.user.crp
   skills:
     description: User skills
     usage: /skills
-    permission: crp.commands.skills
+    permission: crp.commands.user.skills
   croll:
     description: Combat roll
     usage: /croll
-    permission: crp.commands.croll
+    permission: crp.commands.user.croll
   droll:
     description: Dodge roll
     usage: /droll
-    permission: crp.commands.droll
+    permission: crp.commands.user.droll
   sroll:
     description: Shooring roll
     usage: /sroll
-    permission: crp.commands.sroll
+    permission: crp.commands.user.sroll
   mroll:
     description: Magic roll
     usage: /mroll
-    permission: crp.commands.mroll
+    permission: crp.commands.user.mroll
+  skill:
+    description: Skill manipulator command
+    usage: /skill <modify> [nick] <Combat, Dodge, Shooting, magic> [value]
+    permission: crp.commands.mod.skill
