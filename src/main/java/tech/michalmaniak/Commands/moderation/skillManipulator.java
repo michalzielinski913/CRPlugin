@@ -6,10 +6,13 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import tech.michalmaniak.DB.Database;
 import tech.michalmaniak.Stats.Stat;
 import tech.michalmaniak.Utility.ChatParser;
 
 import java.util.UUID;
+
+import static tech.michalmaniak.CRPlugin.playerStatistics;
 
 public class skillManipulator implements CommandExecutor {
 
@@ -20,7 +23,17 @@ public class skillManipulator implements CommandExecutor {
     }
 
     private void modify(CommandSender sender, String[] args){
-        String plUUID=new String(Bukkit.getPlayer(args[1]).getUniqueId().toString());
+        UUID uuid;
+        try{
+            uuid=Bukkit.getPlayer(args[1]).getUniqueId();
+        }catch (NullPointerException e){
+            uuid=Bukkit.getOfflinePlayer(args[1]).getUniqueId();
+        }
+        if(!Database.checkIfUserExist(uuid.toString())){
+            sender.sendMessage(ChatParser.prefixColorChat("User does not exist!"));
+            return;
+        }
+        String plUUID=new String(uuid.toString());
         Stat.SKILL sk = null;
         int value;
         try{
@@ -38,6 +51,10 @@ public class skillManipulator implements CommandExecutor {
 
             sender.sendMessage(ChatParser.prefixColorChat(plUUID+" "+sk.toString()+" "+value));
 
+                Database.updateStat(plUUID, sk, value);
+                if(Bukkit.getPlayer(uuid) != null){
+                    playerStatistics.get(Bukkit.getPlayer(uuid)).modifyStat(sk, value);
+                }
         }catch (IllegalArgumentException e){
             error(sender);
 

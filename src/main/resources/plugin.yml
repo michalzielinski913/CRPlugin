@@ -1,6 +1,7 @@
 name: CRP
 version: 0.0.1
 author: michalmaniak
+website: https://github.com/michalzielinski913
 main: tech.michalmaniak.CRPlugin
 api-version: 1.16
 commands:

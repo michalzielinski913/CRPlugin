@@ -21,7 +21,7 @@ public class RProfile {
         mgc = new Magic(Database.getStat(pl, Stat.SKILL.MAGIC));
     }
 
-    public void modifyCombat(Stat.SKILL type, int value) {
+    public void modifyStat(Stat.SKILL type, int value) {
         switch (type) {
             case COMBAT:
                 cmb.modify(value);

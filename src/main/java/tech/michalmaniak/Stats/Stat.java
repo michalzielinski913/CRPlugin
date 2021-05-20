@@ -44,9 +44,7 @@ public abstract class Stat {
     }
 
     public void modify(int value){
-        this.level+=value;
-        this.min+=value;
-        this.max+=value;
+        this.level=value;
     }
 
 

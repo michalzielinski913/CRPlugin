@@ -4,6 +4,7 @@ import org.bukkit.entity.Player;
 import tech.michalmaniak.Stats.Stat;
 
 import java.sql.*;
+import java.util.UUID;
 
 public class Database {
     private static Database instance=new Database();
@@ -39,11 +40,10 @@ public class Database {
 
     }
 
-    public static boolean checkIfUserExist(Player pl){
+    public static boolean checkIfUserExist(String uuid){
         String query="SELECT COUNT(*) AS TOTAL FROM Players WHERE uuid=?";
-        //TO FIX!! NOT SUPPORTED JDBC FOR SQLITE PREPARED STATEMENTS
         try(PreparedStatement stm=connection.prepareStatement(query)){
-            stm.setString(1, pl.getUniqueId().toString());
+            stm.setString(1, uuid);
             ResultSet res=stm.executeQuery();
             if(res.getInt("TOTAl")==0){
                 return false;
@@ -57,6 +57,30 @@ public class Database {
 
         return false;
     }
+
+    public static boolean checkIfUserExist(Player pl){
+        return checkIfUserExist(pl.getUniqueId().toString());
+    }
+
+    public static void updateStat(String id, Stat.SKILL skill, int value){
+        try{
+            String query="UPDATE Players SET "+skill.toString()+"=? WHERE uuid=?";
+
+            try(PreparedStatement stm=connection.prepareStatement(query)){
+                stm.setInt(1, value);
+                stm.setString(2, id);
+                stm.executeUpdate();
+            }catch(SQLException e){
+                Bukkit.getLogger().info(e.toString());
+            }
+        }catch (IllegalArgumentException e){
+            Bukkit.getLogger().info(e.toString());
+        }
+
+
+
+    }
+
 
 
     public static boolean insertUser(Player pl){
