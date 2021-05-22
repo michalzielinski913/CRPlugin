@@ -4,10 +4,16 @@
 # +------------------------------------------------------+ #
 ############################################################
 
+# CRP spreadsheet
+# after using crp command this value will be returned
+# spreadsheet: https://michalmaniak.tech
+spreadsheet: https://michalmaniak.tech
 
 # Defines minimal roll value
+# Roll wont be smaller than this value
 min-roll: 1
 # Defines maximal roll value
+# Check overflow value (line 20) for additional options
 max-roll: 20
 
 # Defines maximal skill level
