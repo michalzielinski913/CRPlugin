@@ -6,6 +6,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import tech.michalmaniak.CRPlugin;
 import tech.michalmaniak.DB.Database;
 import tech.michalmaniak.Stats.Stat;
 import tech.michalmaniak.Utility.ChatParser;
@@ -49,7 +50,10 @@ public class skillManipulator implements CommandExecutor {
 
             value=Integer.parseInt(args[3]);
 
-            sender.sendMessage(ChatParser.prefixColorChat(plUUID+" "+sk.toString()+" "+value));
+            if(value> CRPlugin.config.getInt("max-skill")){
+                sender.sendMessage(ChatParser.prefixColorChat("You cant set skill higher than "+CRPlugin.config.getInt("max-skill")));
+                return;
+            }
 
                 Database.updateStat(plUUID, sk, value);
                 if(Bukkit.getPlayer(uuid) != null){
@@ -60,6 +64,7 @@ public class skillManipulator implements CommandExecutor {
 
             return;
         }
+        sender.sendMessage(ChatParser.prefixColorChat("Skill level set successfully!"));
         return;
     }
 

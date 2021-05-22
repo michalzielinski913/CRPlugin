@@ -1,0 +1,19 @@
+############################################################
+# +------------------------------------------------------+ #
+# |                   CRP v0.0.1                         | #
+# +------------------------------------------------------+ #
+############################################################
+
+
+# Defines minimal roll value
+min-roll: 1
+# Defines maximal roll value
+max-roll: 20
+
+# Defines maximal skill level
+# Minimal skill level is set to 0
+max-skill: 7
+
+# Should roll value exceed max-roll?
+# ex. If user has skill level 7, min-roll 1 and max-roll 20 should roll range looks like <8, 27> (true) or <8, 20> (false)?
+overflow: true

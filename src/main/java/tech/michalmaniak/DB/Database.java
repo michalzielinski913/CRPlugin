@@ -1,6 +1,7 @@
 package tech.michalmaniak.DB;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import tech.michalmaniak.CRPlugin;
 import tech.michalmaniak.Stats.Stat;
 
 import java.sql.*;
@@ -95,6 +96,16 @@ public class Database {
             return false;
         }
 
+    }
+
+
+    public static ResultSet getStats(UUID uuid) throws SQLException {
+        String query="SELECT * FROM Players WHERE uuid=?";
+
+        PreparedStatement stm=connection.prepareStatement(query);
+            stm.setString(1, uuid.toString());
+            ResultSet res=stm.executeQuery();
+            return res;
     }
 
     public static int getStat(Player pl, Stat.SKILL skill){

@@ -20,6 +20,7 @@ public class CRPlugin extends JavaPlugin {
     public static CRPlugin plugin;
     public static HashMap<Player, RProfile> playerStatistics;
     public static Database db;
+    public static FileConfiguration config;
 
 
     @Override
@@ -28,6 +29,8 @@ public class CRPlugin extends JavaPlugin {
         this.playerStatistics=new HashMap<>();
         this.db= tech.michalmaniak.DB.Database.getDB();
 
+        this.saveDefaultConfig();
+        config=this.getConfig();
 
         this.getCommand("crp").setExecutor(new crp());
         this.getCommand("skills").setExecutor(new skills());

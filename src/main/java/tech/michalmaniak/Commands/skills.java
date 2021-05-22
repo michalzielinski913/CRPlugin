@@ -9,6 +9,9 @@ import tech.michalmaniak.DB.Database;
 import tech.michalmaniak.Stats.Stat;
 import tech.michalmaniak.Utility.ChatParser;
 
+import javax.xml.crypto.Data;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.UUID;
 
 import static tech.michalmaniak.CRPlugin.playerStatistics;
@@ -33,17 +36,26 @@ public class skills implements CommandExecutor {
         try{
             uuid= Bukkit.getPlayer(args[0]).getUniqueId();
         }catch (NullPointerException e){
-            sender.sendMessage(ChatParser.prefixColorChat("Player must be online to perform this command! //TO FIX!"));
-            return;
+            uuid= Bukkit.getOfflinePlayer(args[0]).getUniqueId();
         }
-        if(!Database.checkIfUserExist(uuid.toString())){
-            sender.sendMessage(ChatParser.prefixColorChat("User does not exist!"));
-            return;
+
+        if(Database.checkIfUserExist(uuid.toString())){
+            sender.sendMessage(ChatParser.prefixColorChat(args[0]+" skills:"));
+            try{
+                ResultSet set= Database.getStats(uuid);
+                for(Stat.SKILL sk: Stat.SKILL.values()){
+                sender.sendMessage(ChatParser.colorChat(sk.toString()+": "+set.getInt(sk.toString())));
+                }
+
+            }catch (SQLException e){
+                sender.sendMessage(ChatParser.prefixColorChat("Database error!"));
+            }
+
+
+        }else{
+            sender.sendMessage(ChatParser.prefixColorChat("User not found!"));
         }
-        sender.sendMessage(ChatParser.prefixColorChat(args[0]+" skills:"));
-        for (Stat.SKILL skill : Stat.SKILL.values()) {
-            sender.sendMessage(ChatParser.colorChat(skill.toString()+": "+ playerStatistics.get(Bukkit.getPlayer(uuid)).getSkillLevel(skill)));
-        }
+
 
     }
 
@@ -51,8 +63,10 @@ public class skills implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(args.length<1){
             self(sender);
-        }else{
+        }else if(args.length==1){
             checkPlayer(sender, args);
+        }else{
+            sender.sendMessage(ChatParser.prefixColorChat("Correct syntax: /skills <None/nick>"));
         }
 
 
