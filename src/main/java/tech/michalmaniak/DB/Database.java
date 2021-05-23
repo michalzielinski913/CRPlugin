@@ -42,6 +42,7 @@ public class Database {
     }
 
     public static boolean checkIfUserExist(String uuid){
+        //s
         String query="SELECT COUNT(*) AS TOTAL FROM Players WHERE uuid=?";
         try(PreparedStatement stm=connection.prepareStatement(query)){
             stm.setString(1, uuid);
