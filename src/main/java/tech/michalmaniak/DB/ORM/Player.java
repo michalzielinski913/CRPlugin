@@ -6,6 +6,7 @@ import tech.michalmaniak.Stats.Stat;
 
 @DatabaseTable(tableName = "Players")
 public class Player {
+    public static final String UUID_FIELD_NAME = "uuid";
     @DatabaseField(id = true)
     private String uuid;
     private int Combat;

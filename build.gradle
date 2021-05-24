@@ -9,26 +9,6 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
-}
-jar {
-    manifest {
-        attributes(
-                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
-                'Main-Class': 'tech.michalmaniak.CRPlugin'
-        )
-    }
-}
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-    // https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc
-    implementation group: 'org.xerial', name: 'sqlite-jdbc', version: '3.34.0'
-    // https://mvnrepository.com/artifact/com.j256.ormlite/ormlite-core
-    implementation group: 'com.j256.ormlite', name: 'ormlite-core', version: '5.4'
-// https://mvnrepository.com/artifact/com.j256.ormlite/ormlite-jdbc
-    implementation group: 'com.j256.ormlite', name: 'ormlite-jdbc', version: '5.4'
-
-}
-repositories {
     maven {
         url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
 
@@ -54,7 +34,23 @@ repositories {
 }
 
 dependencies {
-    // Pick only one of these and read the comment in the repositories block.
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    // https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc
+    implementation group: 'org.xerial', name: 'sqlite-jdbc', version: '3.34.0'
+    // https://mvnrepository.com/artifact/com.j256.ormlite/ormlite-core
+    compile group: 'com.j256.ormlite', name: 'ormlite-core', version: '5.4'
+// https://mvnrepository.com/artifact/com.j256.ormlite/ormlite-jdbc
+    compile group: 'com.j256.ormlite', name: 'ormlite-jdbc', version: '5.4'
     compileOnly 'org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT' // The Spigot API with no shadowing. Requires the OSS repo.
 
+
+}
+
+jar {
+    manifest {
+        attributes(
+                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+                'Main-Class': 'tech.michalmaniak.CRPlugin'
+        )
+    }
 }
