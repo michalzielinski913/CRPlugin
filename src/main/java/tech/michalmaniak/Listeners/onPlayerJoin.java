@@ -4,6 +4,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import tech.michalmaniak.CRPlugin;
 import tech.michalmaniak.DB.Database;
 import tech.michalmaniak.RProfile.RProfile;
 
@@ -16,8 +17,8 @@ public class onPlayerJoin implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent joinEvent){
         Player pl=joinEvent.getPlayer();
-        if(!Database.checkIfUserExist(pl)){
-            Database.insertUser(pl);
+        if(!CRPlugin.d.checkIfPlayerExist(pl.getUniqueId())){
+            CRPlugin.d.insertPlayer(pl.getUniqueId());
         }
         playerStatistics.put(pl, new RProfile(pl));
     }
