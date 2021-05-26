@@ -7,7 +7,6 @@ import tech.michalmaniak.Commands.crp;
 import tech.michalmaniak.Commands.moderation.skillManipulator;
 import tech.michalmaniak.Commands.roll;
 import tech.michalmaniak.Commands.skills;
-import tech.michalmaniak.DB.DBConnector;
 import tech.michalmaniak.DB.Database;
 import tech.michalmaniak.Listeners.onPlayerJoin;
 import tech.michalmaniak.Listeners.onPlayerLeave;
@@ -15,7 +14,6 @@ import tech.michalmaniak.RProfile.RProfile;
 import tech.michalmaniak.Stats.Stat;
 
 
-import java.sql.SQLException;
 import java.util.HashMap;
 
 public class CRPlugin extends JavaPlugin {
@@ -23,7 +21,6 @@ public class CRPlugin extends JavaPlugin {
     public static HashMap<Player, RProfile> playerStatistics;
     public static Database db;
     public static FileConfiguration config;
-    public static DBConnector d;
 
 
     @Override
@@ -31,12 +28,6 @@ public class CRPlugin extends JavaPlugin {
         this.saveDefaultConfig();
         this.playerStatistics=new HashMap<>();
         this.db= tech.michalmaniak.DB.Database.getDB();
-
-        try {
-            this.d=new DBConnector();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
 
         this.saveDefaultConfig();
         config=this.getConfig();

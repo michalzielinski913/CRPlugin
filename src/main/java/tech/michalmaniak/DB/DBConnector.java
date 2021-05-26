@@ -47,14 +47,4 @@ public class DBConnector {
 
     }
 
-    public void insertPlayer(UUID uuid) {
-        Player pl=new Player(uuid.toString());
-        try{
-            playerDao.create(pl);
-        }catch (SQLException e){
-
-        }
-
-    }
-
 }
