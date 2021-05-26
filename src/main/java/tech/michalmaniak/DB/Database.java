@@ -15,6 +15,7 @@ public class Database {
         try{
             connection=DriverManager.getConnection("jdbc:sqlite:plugins/CRP/CRPluginDB.db");
             createTablePlayers();
+            createTablePerks();
         }catch (SQLException e){
             Bukkit.getLogger().info(e.toString());
 
@@ -23,6 +24,30 @@ public class Database {
 
     }
 
+/*
+CREATE TABLE "Perks" (
+	"id"	INTEGER NOT NULL UNIQUE,
+	"uuid"	INTEGER NOT NULL,
+	"skill"	TEXT,
+	"value"	INTEGER,
+	"lore" TEXT,
+	PRIMARY KEY("id" AUTOINCREMENT)
+)
+ */
+    private static void createTablePerks(){
+        String query="CREATE TABLE IF NOT EXISTS \"Perks\" (\n" +
+                "\t\"id\"\tINTEGER NOT NULL UNIQUE,\n" +
+                "\t\"uuid\"\tINTEGER NOT NULL,\n" +
+                "\t\"skill\"\tTEXT,\n" +
+                "\t\"value\"\tINTEGER,\n" +
+                "\tPRIMARY KEY(\"id\" AUTOINCREMENT)\n" +
+                ");";
+        try(Statement stm=connection.createStatement()){
+            stm.executeUpdate(query);
+        }catch(SQLException e){
+            Bukkit.getLogger().info(e.toString());
+        }
+    }
     private static void createTablePlayers() {
         String query="CREATE TABLE IF NOT EXISTS \"Players\"  (\n" +
                 "\t\"id\"\tINTEGER,\n" +
@@ -40,6 +65,8 @@ public class Database {
         }
 
     }
+//INSERT INTO "main"."Perks"("uuid","skill","value") VALUES (0,2,1);
+    //SELECT COUNT(value) as modifier FROM Perks WHERE uuid='0' and skill='1'
 
     public static boolean checkIfUserExist(String uuid){
         String query="SELECT COUNT(*) AS TOTAL FROM Players WHERE uuid=?";
