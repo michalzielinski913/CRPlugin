@@ -34,6 +34,23 @@ CREATE TABLE "Perks" (
 	PRIMARY KEY("id" AUTOINCREMENT)
 )
  */
+//INSERT INTO "main"."Perks"("uuid","skill","value") VALUES (0,2,1);
+    private static void insertPerk(UUID uuid, Stat.SKILL sk, int value){
+        String query="INSERT INTO \"main\".\"Perks\"(\"uuid\",\"skill\",\"value\") VALUES (?,?,?);";
+
+        try(PreparedStatement stm=connection.prepareStatement(query)){
+            stm.setString(1, uuid.toString());
+            stm.setString(2, sk.toString());
+            stm.setInt(3, value);
+
+            stm.executeUpdate();
+        }catch(SQLException e){
+            Bukkit.getLogger().info(e.toString());
+        }
+
+    }
+
+
     private static void createTablePerks(){
         String query="CREATE TABLE IF NOT EXISTS \"Perks\" (\n" +
                 "\t\"id\"\tINTEGER NOT NULL UNIQUE,\n" +
@@ -65,7 +82,7 @@ CREATE TABLE "Perks" (
         }
 
     }
-//INSERT INTO "main"."Perks"("uuid","skill","value") VALUES (0,2,1);
+
     //SELECT COUNT(value) as modifier FROM Perks WHERE uuid='0' and skill='1'
 
     public static boolean checkIfUserExist(String uuid){
