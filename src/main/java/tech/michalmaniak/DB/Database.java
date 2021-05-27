@@ -1,7 +1,6 @@
 package tech.michalmaniak.DB;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import tech.michalmaniak.CRPlugin;
 import tech.michalmaniak.Stats.Stat;
 
 import java.sql.*;
@@ -35,14 +34,20 @@ CREATE TABLE "Perks" (
 )
  */
 //INSERT INTO "main"."Perks"("uuid","skill","value") VALUES (0,2,1);
-    private static void insertPerk(UUID uuid, Stat.SKILL sk, int value){
-        String query="INSERT INTO \"main\".\"Perks\"(\"uuid\",\"skill\",\"value\") VALUES (?,?,?);";
+    public static void insertPerk(UUID sender, Stat.SKILL sk, int value, UUID givenBY, int validTo, String lore){
+        String query="INSERT INTO \"main\".\"Perks\"(\"id\",\"userUUID\",\"skill\",\"value\",\"givenBy\",\"validUntil\",\"validUntil\") VALUES (NULL,?,?,?,?,?,?);\n";
 
         try(PreparedStatement stm=connection.prepareStatement(query)){
-            stm.setString(1, uuid.toString());
+            stm.setString(1, sender.toString());
             stm.setString(2, sk.toString());
             stm.setInt(3, value);
-
+            if(givenBY==null){
+                stm.setString(4, "CONSOLE");
+            }else{
+                stm.setString(4, givenBY.toString());
+            }
+            stm.setInt(5, validTo);
+            stm.setString(6, lore);
             stm.executeUpdate();
         }catch(SQLException e){
             Bukkit.getLogger().info(e.toString());
@@ -50,23 +55,36 @@ CREATE TABLE "Perks" (
 
     }
 
+    public static ResultSet getPerk(UUID uuid, Stat.SKILL sk) throws SQLException {
+        String query="SELECT * FROM Perks WHERE userUUID=? AND skill=?";
+
+        PreparedStatement stm=connection.prepareStatement(query);
+        stm.setString(1, uuid.toString());
+        stm.setString(2, sk.toString());
+        ResultSet res=stm.executeQuery();
+        return res;
+    }
+
 
     private static void createTablePerks(){
-        String query="CREATE TABLE IF NOT EXISTS \"Perks\" (\n" +
-                "\t\"id\"\tINTEGER NOT NULL UNIQUE,\n" +
-                "\t\"uuid\"\tINTEGER NOT NULL,\n" +
+        StringBuilder query= new StringBuilder("CREATE TABLE \"Perks\" (\n" +
+                "\t\"id\"\tINTEGER UNIQUE,\n" +
+                "\t\"userUUID\"\tTEXT,\n" +
                 "\t\"skill\"\tTEXT,\n" +
                 "\t\"value\"\tINTEGER,\n" +
+                "\t\"givenBy\"\tTEXT,\n" +
+                "\t\"validUntil\"\tINTEGER,\n" +
+                "\t\"lore\"\tTEXT,\n" +
                 "\tPRIMARY KEY(\"id\" AUTOINCREMENT)\n" +
-                ");";
+                ");");
         try(Statement stm=connection.createStatement()){
-            stm.executeUpdate(query);
+            stm.executeUpdate(query.toString());
         }catch(SQLException e){
             Bukkit.getLogger().info(e.toString());
         }
     }
     private static void createTablePlayers() {
-        String query="CREATE TABLE IF NOT EXISTS \"Players\"  (\n" +
+        StringBuilder query= new StringBuilder("CREATE TABLE IF NOT EXISTS \"Players\"  (\n" +
                 "\t\"id\"\tINTEGER,\n" +
                 "\t\"uuid\"\tTEXT NOT NULL UNIQUE,\n" +
                 "\t\"Combat\"\tINTEGER DEFAULT 0,\n" +
@@ -74,9 +92,9 @@ CREATE TABLE "Perks" (
                 "\t\"Magic\"\tINTEGER DEFAULT 0,\n" +
                 "\t\"Shooting\"\tINTEGER DEFAULT 0,\n" +
                 "\tPRIMARY KEY(\"id\" AUTOINCREMENT)\n" +
-                ");";
+                ");");
         try(Statement stm=connection.createStatement()){
-            stm.executeUpdate(query);
+            stm.executeUpdate(query.toString());
         }catch(SQLException e){
             Bukkit.getLogger().info(e.toString());
         }
