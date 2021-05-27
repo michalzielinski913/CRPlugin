@@ -33,3 +33,7 @@ commands:
     description: Skill manipulator command
     usage: /skill <modify> [nick] <Combat, Dodge, Shooting, magic> [value]
     permission: crp.commands.mod.skill
+  perks:
+    description: Check your perks
+    usage: perks
+    permission: crp.commands.user.perk
