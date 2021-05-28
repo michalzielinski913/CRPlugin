@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e3dc1f19-9479-48e9-95d4-2764996d18a6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,19 +32,6 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="CRP" type="f1a62948:ProjectNode" />
                 <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="CRP" type="f1a62948:ProjectNode" />
-                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
-                <item name="main" type="396b929e:GradleViewContributor$SourceSetNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="CRP" type="f1a62948:ProjectNode" />
-                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
-                <item name="main" type="396b929e:GradleViewContributor$SourceSetNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
               </path>
             </expand>
             <select />
@@ -156,6 +143,7 @@
       <workItem from="1621585522667" duration="1646000" />
       <workItem from="1621667482771" duration="3380000" />
       <workItem from="1621682992182" duration="2656000" />
+      <workItem from="1622201378527" duration="611000" />
     </task>
     <servers />
   </component>
@@ -167,38 +155,38 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2472" y="178" key="#SQL_Dialects/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1621319377231" />
-    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1621422659022">
+    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1622184770600">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1621422659022" />
-    <state width="1877" height="133" key="GridCell.Tab.0.bottom" timestamp="1621697721865">
+    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1622184770600" />
+    <state width="938" height="133" key="GridCell.Tab.0.bottom" timestamp="1622202489461">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="133" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1621697721865" />
+    <state width="938" height="133" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1622202489461" />
     <state width="938" height="133" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1621532054808" />
-    <state width="1877" height="133" key="GridCell.Tab.0.center" timestamp="1621697721864">
+    <state width="938" height="133" key="GridCell.Tab.0.center" timestamp="1622202489461">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="133" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1621697721864" />
+    <state width="938" height="133" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1622202489461" />
     <state width="938" height="133" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1621532054808" />
-    <state width="1877" height="133" key="GridCell.Tab.0.left" timestamp="1621697721864">
+    <state width="938" height="133" key="GridCell.Tab.0.left" timestamp="1622202489461">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="133" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1621697721864" />
+    <state width="938" height="133" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1622202489461" />
     <state width="938" height="133" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1621532054808" />
-    <state width="1877" height="133" key="GridCell.Tab.0.right" timestamp="1621697721865">
+    <state width="938" height="133" key="GridCell.Tab.0.right" timestamp="1622202489461">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="133" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1621697721865" />
+    <state width="938" height="133" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1622202489461" />
     <state width="938" height="133" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1621532054808" />
     <state x="2227" y="0" width="1114" height="1027" maximized="true" key="dock-window-1" timestamp="1621692014179">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2227" y="0" width="1114" height="1027" maximized="true" key="dock-window-1/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1621692014179" />
-    <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1621697721850">
+    <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1622202489431">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1621697721850" />
+    <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1622202489431" />
     <state x="2536" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1621532054789" />
     <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1621320966485">
       <screen x="1920" y="0" width="1920" height="1040" />
@@ -208,5 +196,16 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="682" y="432" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1622185626902" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/build.gradle</url>
+          <line>62</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
