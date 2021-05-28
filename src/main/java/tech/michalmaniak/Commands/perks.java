@@ -37,6 +37,7 @@ public class perks implements CommandExecutor {
     }
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        //test
         if(sender instanceof Player){
             Player pl=(Player)sender;
             pl.sendMessage(ChatParser.prefixColorChat("Your perks:"));
