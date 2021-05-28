@@ -3,7 +3,7 @@ plugins {
 }
 
 group 'tech.michalmaniak'
-version '1.0-SNAPSHOT'
+version 'v0.1'
 
 sourceCompatibility = 1.8
 
