@@ -14,6 +14,7 @@ import tech.michalmaniak.Listeners.onPlayerLeave;
 import tech.michalmaniak.Placeholder.SkillExpansion;
 import tech.michalmaniak.RProfile.RProfile;
 import tech.michalmaniak.Stats.Stat;
+import tech.michalmaniak.Utility.ChatParser;
 
 
 import java.util.HashMap;
@@ -48,6 +49,9 @@ public class CRPlugin extends JavaPlugin {
 
         if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null){
             new SkillExpansion(this).register();
+        }else{
+            Bukkit.getLogger().info(ChatParser.prefixColorChat("PlaceholderAPI not found!"));
+
         }
 
 
