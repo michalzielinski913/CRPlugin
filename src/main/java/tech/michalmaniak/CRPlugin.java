@@ -1,5 +1,6 @@
 package tech.michalmaniak;
 
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -11,8 +12,10 @@ import tech.michalmaniak.Commands.skills;
 import tech.michalmaniak.DB.Database;
 import tech.michalmaniak.Listeners.onPlayerJoin;
 import tech.michalmaniak.Listeners.onPlayerLeave;
+import tech.michalmaniak.Placeholder.SkillExpansion;
 import tech.michalmaniak.RProfile.RProfile;
 import tech.michalmaniak.Stats.Stat;
+import tech.michalmaniak.Utility.ChatParser;
 
 
 import java.util.HashMap;
@@ -45,6 +48,13 @@ public class CRPlugin extends JavaPlugin {
         this.getCommand("perks").setExecutor(new perks());
         getServer().getPluginManager().registerEvents(new onPlayerJoin(), this);
         getServer().getPluginManager().registerEvents(new onPlayerLeave(), this);
+
+        if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null){
+            new SkillExpansion(this).register();
+        }else{
+            Bukkit.getLogger().info(ChatParser.prefixColorChat("PlaceholderAPI not found!"));
+
+        }
 
 
     }
