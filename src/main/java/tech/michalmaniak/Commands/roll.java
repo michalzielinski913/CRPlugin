@@ -31,7 +31,7 @@ public class roll implements CommandExecutor {
                 roll += res.getInt("value");
             }
         } catch (SQLException e) {
-
+                pl.sendMessage(ChatParser.prefixColorChat(" Database error!"));
         }
         return roll;
     }
@@ -46,6 +46,8 @@ public class roll implements CommandExecutor {
             pl.sendMessage(ChatParser.colorChat("You rolled: "+(roll+this.getPerkSum(pl, skill))));
 
 
+        }else{
+            sender.sendMessage(ChatParser.prefixColorChat("Only player can use this command!"));
         }
         return true;
     }

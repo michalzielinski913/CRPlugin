@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import tech.michalmaniak.DB.Database;
 import tech.michalmaniak.Stats.Stat;
 import tech.michalmaniak.Utility.ChatParser;
+import tech.michalmaniak.Utility.usernameToUUID;
 
 import javax.xml.crypto.Data;
 import java.sql.ResultSet;
@@ -31,14 +32,7 @@ public class skills implements CommandExecutor {
     }
 
     public void checkPlayer(CommandSender sender, String[] args){
-        //FIX duplicate code
-        UUID uuid;
-        try{
-            uuid= Bukkit.getPlayer(args[0]).getUniqueId();
-        }catch (NullPointerException e){
-            uuid= Bukkit.getOfflinePlayer(args[0]).getUniqueId();
-        }
-
+        UUID uuid= usernameToUUID.get(args[0]);
         if(Database.checkIfUserExist(uuid.toString())){
             sender.sendMessage(ChatParser.prefixColorChat(args[0]+" skills:"));
             try{
@@ -66,7 +60,7 @@ public class skills implements CommandExecutor {
         }else if(args.length==1){
             checkPlayer(sender, args);
         }else{
-            sender.sendMessage(ChatParser.prefixColorChat("Correct syntax: /skills <None/nick>"));
+            sender.sendMessage(ChatParser.prefixColorChat("Correct syntax: /skills <None/username>"));
         }
 
 

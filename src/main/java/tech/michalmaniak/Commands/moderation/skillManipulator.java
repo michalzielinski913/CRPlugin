@@ -10,6 +10,9 @@ import tech.michalmaniak.CRPlugin;
 import tech.michalmaniak.DB.Database;
 import tech.michalmaniak.Stats.Stat;
 import tech.michalmaniak.Utility.ChatParser;
+import tech.michalmaniak.Utility.Exceptions.StatNotFoundException;
+import tech.michalmaniak.Utility.StatSearch;
+import tech.michalmaniak.Utility.usernameToUUID;
 
 import java.util.UUID;
 
@@ -24,34 +27,26 @@ public class skillManipulator implements CommandExecutor {
     }
 
     private void modify(CommandSender sender, String[] args){
-        UUID uuid;
-        try{
-            uuid=Bukkit.getPlayer(args[1]).getUniqueId();
-        }catch (NullPointerException e){
-            uuid=Bukkit.getOfflinePlayer(args[1]).getUniqueId();
-        }
+        UUID uuid= usernameToUUID.get(args[1]);
         if(!Database.checkIfUserExist(uuid.toString())){
             sender.sendMessage(ChatParser.prefixColorChat("User does not exist!"));
             return;
         }
         String plUUID=new String(uuid.toString());
-        Stat.SKILL sk = null;
+        Stat.SKILL sk;
         int value;
-        try{
-            boolean found=false;
-            for(Stat.SKILL skill: Stat.SKILL.values()){
-                if(skill.toString().equals(args[2])){
-                    sk=skill;
-                    found=true;
-                    break;
-                }
+            try{
+                sk= StatSearch.validStat(args[2]);
+        }catch (StatNotFoundException e){
+                sender.sendMessage(ChatParser.prefixColorChat(" Statistic not found!"));
+                return;
             }
-            if(!found) throw new IllegalArgumentException();
 
             value=Integer.parseInt(args[3]);
 
             if(value> CRPlugin.config.getInt("max-skill")){
-                sender.sendMessage(ChatParser.prefixColorChat("You cant set skill higher than "+CRPlugin.config.getInt("max-skill")));
+                sender.sendMessage(ChatParser.prefixColorChat("You cant set skill higher than "+
+                        CRPlugin.config.getInt("max-skill")));
                 return;
             }
 
@@ -59,11 +54,7 @@ public class skillManipulator implements CommandExecutor {
                 if(Bukkit.getPlayer(uuid) != null){
                     playerStatistics.get(Bukkit.getPlayer(uuid)).modifyStat(sk, value);
                 }
-        }catch (IllegalArgumentException e){
-            error(sender);
 
-            return;
-        }
         sender.sendMessage(ChatParser.prefixColorChat("Skill level set successfully!"));
         return;
     }

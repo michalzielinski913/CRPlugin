@@ -9,6 +9,7 @@ import tech.michalmaniak.CRPlugin;
 import tech.michalmaniak.DB.Database;
 import tech.michalmaniak.Stats.Stat;
 import tech.michalmaniak.Utility.ChatParser;
+import tech.michalmaniak.Utility.usernameToUUID;
 
 import javax.xml.crypto.Data;
 import java.sql.ResultSet;
@@ -27,12 +28,7 @@ public class perkManipulator implements CommandExecutor {
   }
 
   public void addPerk(CommandSender sender, String[] args){
-      UUID uuid;
-      try{
-          uuid=Bukkit.getPlayer(args[1]).getUniqueId();
-      }catch (NullPointerException e){
-          uuid=Bukkit.getOfflinePlayer(args[1]).getUniqueId();
-      }
+      UUID uuid= usernameToUUID.get(args[1]);
       if(!Database.checkIfUserExist(uuid.toString())){
           sender.sendMessage(ChatParser.prefixColorChat("User does not exist!"));
           return;
@@ -89,12 +85,7 @@ public class perkManipulator implements CommandExecutor {
     }
 
     private void removePerk(CommandSender sender, String[] args) {
-        UUID uuid;
-        try{
-            uuid=Bukkit.getPlayer(args[1]).getUniqueId();
-        }catch (NullPointerException e){
-            uuid=Bukkit.getOfflinePlayer(args[1]).getUniqueId();
-        }
+        UUID uuid= usernameToUUID.get(args[1]);
         if(!Database.checkIfUserExist(uuid.toString())){
             sender.sendMessage(ChatParser.prefixColorChat("User does not exist!"));
             return;

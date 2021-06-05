@@ -23,19 +23,10 @@ public class Database {
 
     }
 
-/*
-CREATE TABLE "Perks" (
-	"id"	INTEGER NOT NULL UNIQUE,
-	"uuid"	INTEGER NOT NULL,
-	"skill"	TEXT,
-	"value"	INTEGER,
-	"lore" TEXT,
-	PRIMARY KEY("id" AUTOINCREMENT)
-)
- */
-//INSERT INTO "main"."Perks"("uuid","skill","value") VALUES (0,2,1);
+
     public static void insertPerk(UUID sender, Stat.SKILL sk, int value, String givenBY, int validTo, String lore){
-        String query="INSERT INTO \"main\".\"Perks\"(\"id\",\"userUUID\",\"skill\",\"value\",\"givenBy\",\"validUntil\",\"lore\") VALUES (NULL,?,?,?,?,?,?);\n";
+        String query="INSERT INTO \"main\".\"Perks\"(\"id\",\"userUUID\",\"skill\",\"value\",\"givenBy\",\"validUntil\",\"lore\") " +
+                "VALUES (NULL,?,?,?,?,?,?);\n";
 
         try(PreparedStatement stm=connection.prepareStatement(query)){
             stm.setString(1, sender.toString());

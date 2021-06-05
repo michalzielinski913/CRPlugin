@@ -38,14 +38,15 @@ public class CRPlugin extends JavaPlugin {
         config=this.getConfig();
 
         this.getCommand("crp").setExecutor(new crp());
-        this.getCommand("skills").setExecutor(new skills());
 
         this.getCommand("croll").setExecutor(new roll(Stat.SKILL.COMBAT));
         this.getCommand("droll").setExecutor(new roll(Stat.SKILL.DODGE));
         this.getCommand("sroll").setExecutor(new roll(Stat.SKILL.SHOOTING));
         this.getCommand("mroll").setExecutor(new roll(Stat.SKILL.MAGIC));
 
+        this.getCommand("skills").setExecutor(new skills());
         this.getCommand("skill").setExecutor(new skillManipulator());
+
         this.getCommand("perks").setExecutor(new perks());
         this.getCommand("perk").setExecutor(new perkManipulator());
         getServer().getPluginManager().registerEvents(new onPlayerJoin(), this);
