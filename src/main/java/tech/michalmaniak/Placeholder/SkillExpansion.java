@@ -25,7 +25,7 @@ public class SkillExpansion extends PlaceholderExpansion {
 
     @Override
     public String getIdentifier(){
-        return "crp";
+        return plugin.getDescription().getName().toString();
     }
 
     @Override
@@ -36,7 +36,7 @@ public class SkillExpansion extends PlaceholderExpansion {
 
     @Override
     public String getVersion(){
-        return "1.0.0";
+        return plugin.getDescription().getVersion().toString();
     }
 
     @Override
